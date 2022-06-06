@@ -7,7 +7,7 @@ import sys
 import pyparsing
 import rdflib
 from flask import Flask, render_template, flash, request
-from wtforms import Form, TextField, validators
+from wtforms import Form, StringField, validators
 
 from owlready2 import *
 
@@ -19,7 +19,7 @@ rdf_filename = "misc/toyota.rdf"
 
 
 class ReusableForm(Form):
-    query = TextField('Query:', validators=[validators.data_required()])
+    query = StringField('Query:', validators=[validators.data_required()])
 
     @app.route("/", methods=['GET', 'POST'])
     def hello():
